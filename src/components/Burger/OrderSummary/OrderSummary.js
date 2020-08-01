@@ -22,7 +22,7 @@ const OrderSummary = (props) => {
             <h4>Total price: {orderContext.price}</h4>
             <p>Continue to checkout?</p>
             <Button clicked={props.closeModal} btnType='Danger'>Cancel</Button>
-            <Button clicked={props.continueCheckout} btnType='Success'>Continue</Button>
+            <Button btnType='Success' clicked={props.continueCheckout}>Continue</Button>
         </Aux>
     )
 };

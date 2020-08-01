@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import classes from './BurgerBuilder.module.css';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/BuildControls/BuildControls';
@@ -107,39 +106,51 @@ class BurgerBuilder extends Component {
     };
 
     continueCheckout = (e) => {
-        this.setState({
-            loading: true,
-            checkoutProceeded: true
-        });
+        // this.setState({
+            // loading: true,
+            // checkoutProceeded: true
+        // });
 
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Anna',
-                adress: {
-                    street: 'Street1',
-                    zipCode: '01025',
-                    country: 'Ukraine'
-                },
-                email: 'email'
-            },
-            deliveryMethod: 'fastest'
-        };
-        axios.post('orders.json', order)
-            .then(request=> {
-                this.setState({
-                    loading: false
-                });
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'Anna',
+        //         adress: {
+        //             street: 'Street1',
+        //             zipCode: '01025',
+        //             country: 'Ukraine'
+        //         },
+        //         email: 'email'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // };
+        // axios.post('orders.json', order)
+        //     .then(request=> {
+        //         this.setState({
+        //             loading: false
+        //         });
                 this.closeModal();
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false,
-                    orderPlaced: false
-                });
-                this.closeModal();
-            });
+        //     })
+        //     .catch(error => {
+        //         this.setState({
+        //             loading: false,
+        //             orderPlaced: false
+        //         });
+        //         this.closeModal();
+        //     });
+
+        let queryParams = [];
+        for (let ingredient in this.state.ingredients) {
+            if (this.state.ingredients.hasOwnProperty(ingredient)) {
+                queryParams.push(encodeURIComponent(ingredient)+'='+encodeURIComponent(this.state.ingredients[ingredient]));
+            }
+        }
+        let query = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?'+query
+        })
     };
 
     render() {
