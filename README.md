@@ -1,6 +1,8 @@
 **PROJECT DESCRIPTION** <br />
 This project created on React is a training web application where you can create your own burger adding ingredients to it and make an order. For saving order details Firebase database is used.
 
+You can view project demo <a href="https://binarnia.com/burger-builder/">here</a>.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
