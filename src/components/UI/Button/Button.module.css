@@ -36,3 +36,8 @@
         display: block;
     }
 }
+
+.Button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
